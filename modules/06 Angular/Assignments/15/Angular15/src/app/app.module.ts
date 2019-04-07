@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ImgComponent } from './img/img.component';
+import { DisplayerComponent } from './displayer/displayer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImgComponent
+    ImgComponent,
+    DisplayerComponent
   ],
   imports: [
     BrowserModule

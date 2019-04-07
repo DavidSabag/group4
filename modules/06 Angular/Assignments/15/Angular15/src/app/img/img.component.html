@@ -1,5 +1,5 @@
-<img [src]='img'>
+<img [src]='myImg'>
 <div class="like_counter_container">
-  <button class="like-btn">LIKE</button>
-  <span class="counter" (click) = clicked()></span>
+  <button class="like-btn" (click) = clicked()>LIKE</button>
+  <span class="counter" >{{counter}}</span>
 </div>
