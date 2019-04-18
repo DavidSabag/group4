@@ -1,5 +1,7 @@
-<img [src]='myImg'>
+<img [src]='myImg.img'>
 <div class="like_counter_container">
   <button class="like-btn" (click) = clicked()>LIKE</button>
-  <span class="counter" >{{counter}}</span>
+  <span class="counter" >{{counter}}</span><br>
+  <span (click)="check()">{{myImg.autor}}</span>
+  <!-- <router-outlet></router-outlet> -->
 </div>

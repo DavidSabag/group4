@@ -4,6 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ImgComponent } from './img/img.component';
 import { DisplayerComponent } from './displayer/displayer.component';
+import { RouterModule, Routes } from '@angular/router';
+
+ const appRoutes: Routes = [
+    { path: "authors/:autorInput", component: ImgComponent, pathMatch: '' }
+
+ ]
 
 @NgModule({
   declarations: [
