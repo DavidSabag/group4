@@ -1,0 +1,30 @@
+<form #payForm="ngForm" (submit)="onSubmitForm(f)">
+
+  <div ngModelGroup="payment">
+    <p>
+      <label> Card Number: </label>
+      <input type="text" name="cardNumber" ngModel #cardNum="ngModel" required><br>
+    </p>
+    <p>
+      <label> Name of Card: </label>
+      <!-- <input type="text" [(ngModel)]="cardName" #nameC="ngModel" minlength="8" required><br> -->
+    </p>
+
+    <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+      <span *ngIf="cardNumber.errors.minlength">
+          Please enter 8 characters
+        </span>
+    </div>
+
+    <p>
+      <label> Expiry Date: </label>
+      <input id="exd" type="date" required><br>
+    </p>
+    <p>
+      <label>Security Code: </label>
+      <input id="sc" type="text" maxlength="3" required><br>
+    </p>
+  </div>
+  <button id="sub" type="button" onclick="submitt()">Submit</button>
+
+</form><br><br>
