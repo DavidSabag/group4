@@ -9,10 +9,12 @@ export class GameService {
   availableCards: Card[];
   hasWon: boolean;
   isGameActive: boolean;
+  timer2: string 
   constructor() {
     this.cards = [];
     this.hasWon = false;
     this.isGameActive = true;
+    this.timer2 = "00:00";
     this.initAvailableCards();
     this.shuffle();
    }
@@ -73,5 +75,17 @@ export class GameService {
    }
    checkWin() {
       this.hasWon = this.cards.every(card => card.correct);
+   }
+   timer(){
+    var interval = setInterval(function() {
+      var timer = this.timer2.split(':');
+      var minutes = parseInt(timer[0], 10);
+      var seconds = parseInt(timer[1], 10);
+      ++seconds;
+      minutes = (seconds < 0) ? ++minutes : minutes;
+      seconds = (seconds < 0) ? 59 : seconds;
+      seconds = (seconds < 10) ? '0' + seconds : seconds;
+      this.timer2 = minutes + ':' + seconds;
+    }, 1000);
    }
 }

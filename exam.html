@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Exam</title>
+</head>
+<style>
+    #myForm {
+        position: sticky;
+        top: 0;
+    }
+</style>
+
+<body>
+
+    <form id="myForm">
+        <input type="text" id="input">
+
+        <button onclick="validate(1)" type="button">Submit</button><br>
+        <button onclick="loadMore()" type="button" id="load-more">Load More</button><br><br><br>
+    </form>
+
+    <script>
+        function validate(id) {
+            let input = document.querySelector("#input").value;
+            if (input.split('').length <= 3) {
+                let err = document.createElement("div");
+                err.innerHTML = "Search term must be at least 3 chareters";
+                document.querySelector("#myForm").appendChild(err);
+            }
+            else {
+                fetch("http://www.omdbapi.com/?apikey=74fed2a7&s=titanic&type=movie&page=" + id)
+                    .then(function (stream) {
+                        stream.json()
+                            .then(function (json) {
+                                let res = document.createElement("div");
+                                res.innerHTML = JSON.stringify(json.Search);
+                                document.querySelector("#myForm").appendChild(res);
+                                console.log(json.Search)
+                                let poster = json.Search[id].Poster;
+                                console.log(json.Search.Poster)
+                                let poster11 = document.createElement("div");
+                                poster11.innerHTML = "<br><br>Poster Name: " + poster;
+                                document.querySelector("#myForm").appendChild(poster11);
+                                let imdblink = document.createElement("a");
+
+                                imdblink.href = "https://www.imdb.com/title/" + json.Search[id].imdbID;
+                                imdblink.innerHTML = "IMDB Link";
+                                document.querySelector("#myForm").appendChild(imdblink);
+                            })
+                    })
+                .catch(function(err){
+                    //TODO not movies to return
+                    document.querySelector("#load-more").disabled = true;
+                })
+            }
+        }
+        function loadMore() {
+            console.log(Math.floor(Math.random() * 10));
+            validate(Math.floor(Math.random() * 30));
+        }
+    </script>
+</body>
+
+</html>
