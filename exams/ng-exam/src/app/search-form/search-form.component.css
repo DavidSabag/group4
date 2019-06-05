@@ -1,0 +1,14 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+.form-group{
+    margin-top: 50px;
+}
+.container{
+    width: 400px;
+}
+form{
+    display: flex;
+}
+.btn{
+    margin: 50px 30px 30px 20px;
+    padding: 6px 23px;
+}

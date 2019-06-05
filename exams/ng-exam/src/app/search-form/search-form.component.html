@@ -1,0 +1,9 @@
+<div class="container">
+  <form onsubmit="return false;">
+    <div class="form-group" >
+      <input type="text" class="form-control" id="name" required placeholder="Enter Movie to search"  minlength="3" #searchTerm>
+    </div>
+    <button type="submit" class="btn btn-success" (click)=search(searchTerm.value)>Submit</button>
+
+  </form>
+</div>
